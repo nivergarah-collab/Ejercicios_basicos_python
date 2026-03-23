@@ -1,3 +1,9 @@
+"""
+     Calculadora basica con operaciones limitadas y 2 entradas de numeros. 
+"""
+
+# Inicio programa #
+
 x = int(input("Tipo de operación:\n 1 = suma,\n 2 = resta,\n 3 = multiplicación,\n 4 = división,\n 5 = potencia\n"))
 while x not in range(1, 6):
     x = int(input("Elija una opcion valida\n"))
