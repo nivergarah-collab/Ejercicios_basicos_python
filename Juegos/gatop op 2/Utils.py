@@ -1,8 +1,5 @@
 import random
 
-# Consiga Cisco
-
-
 ## Tablero
 def display_board(board):
  print("+-------+-------+-------+")
@@ -35,20 +32,20 @@ def make_list_of_free_fields(board):
 def enter_move(board, move):
  move = move
  listalibre = make_list_of_free_fields(board)
- move, space_move, a,b = number_to_space(move)
+ space_move, a,b = number_to_space(move)
  while space_move not in listalibre:
   move = int(input("Ingrese un movimiento valido\n"))
-  move, space_move, a, b = number_to_space(move)
+  space_move, a, b = number_to_space(move)
  board[a][b] = "x"
  return board
 
 def draw_move(board):
  maching_move = random.randrange(1,10)
  listalibre = make_list_of_free_fields(board)
- maching_move, space_move,a,b = number_to_space(maching_move)
+ space_move,a,b = number_to_space(maching_move)
  while space_move not in listalibre:
   maching_move = random.randrange(1,10)
-  maching_move, space_move,a,b = number_to_space(maching_move)
+  space_move,a,b = number_to_space(maching_move)
  board[a][b] = "O"
  sing = "O"
  return board, sing
@@ -63,25 +60,29 @@ def number_to_space(number):
  row = opciones[number][0]
  column = opciones[number][1]
  number += 1
- return number, move, row, column
+ return move, row, column
 
 
 ## Condicion
 
 def victory_for(board, sign):
+ listalibre = make_list_of_free_fields(board)
  result = lista_de_verificacion(board)
  sign = sign
+
  if result == "Win" and sign == "X":
   display_board(board)
   print("Felicidades!!!! Has GANADO!")
   return 1
-  
  elif result == "Win" and sign == "O":
   display_board(board)
   print("LOSE :(   Mas suerte para la proxima!")
   return 1
+ elif len(listalibre) == 0:
+  display_board(board)
+  print("Empate")
+  return 1
  else: 
-  result == "continue"
   return 0
 
 def lista_de_verificacion(board):
