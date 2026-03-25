@@ -53,23 +53,6 @@ def draw_move(board):
  sing = "O"
  return board, sing
 
-## Condicion
-
-def victory_for(board, sign):
- result = lista_de_verificacion(board)
- sign = sign
- if result == "Win" and sign == "X":
-  display_board(board)
-  print("Felicidades!!!! Has GANADO!")
-  return 1, sign
-  
- elif result == "Win" and sign == "O":
-  display_board(board)
-  print("LOSE :(   Mas suerte para la proxima!")
-  return 1, sign
- else: 
-  result == "continue"
-  return 0, sign
 
 def number_to_space(number):
  while number not in range(1,10):
@@ -83,6 +66,23 @@ def number_to_space(number):
  return number, move, row, column
 
 
+## Condicion
+
+def victory_for(board, sign):
+ result = lista_de_verificacion(board)
+ sign = sign
+ if result == "Win" and sign == "X":
+  display_board(board)
+  print("Felicidades!!!! Has GANADO!")
+  return 1
+  
+ elif result == "Win" and sign == "O":
+  display_board(board)
+  print("LOSE :(   Mas suerte para la proxima!")
+  return 1
+ else: 
+  result == "continue"
+  return 0
 
 def lista_de_verificacion(board):
   op1 = board[0][0] == board[0][1] and board [0][2]  == board[0][1]

@@ -8,16 +8,19 @@ board = [[a,b,c],[d,e,f],[g,h,i]]
 
 ## INICIO ##
 while master == 0 and empate != 4: 
+ 
+
  U.display_board(board)
  move = int(input("What its your move?\n"))
  board = U.enter_move(board, move)
- # U.display_board(board)
- status, sign = U.victory_for(board, 'X')
+ status = U.victory_for(board, 'X')
  if status == 1:
   master += 1
+
+
  else: 
   U.draw_move(board)
-  status, sign = U.victory_for(board, '0')
+  status = U.victory_for(board, 'O')
   if status == 1:
    master += 1 
   else:
